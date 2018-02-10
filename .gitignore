@@ -1,3 +1,12 @@
+.vscode
 node_modules
 venv
 network/*
+
+# libraries / os
+intel/l_*
+ks/node*-ks.cfg
+CentOS-7-x86_64-DVD-1708.iso
+
+# virtual hard drives
+*.qcow2
