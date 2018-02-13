@@ -1,12 +1,20 @@
 .vscode
 node_modules
 venv
-network/*
+
+# infrastructure
+network
+ftp
+tftp
+backup
 
 # libraries / os
 intel/l_*
-ks/node*-ks.cfg
 CentOS-7-x86_64-DVD-1708.iso
+
+# other example configs
+umt/
+tesla31/
 
 # virtual hard drives
 *.qcow2

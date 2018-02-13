@@ -10,6 +10,11 @@ function setUpPersistentNetwork() # name
   virsh net-autostart $name
 }
 
+if (virsh net-list --all | grep -E 'mpi-admin|mpi-isolated'); then
+  echo 'Network exists'
+  exit 0
+fi
+
 name=mpi-admin
 cat <<XML_TEMPLATE > network/$name.xml
 <network>
@@ -24,7 +29,8 @@ cat <<XML_TEMPLATE > network/$name.xml
   <mac address='52:54:00:36:6c:3c'/>
   <ip address='10.20.30.1' netmask='255.255.255.0'>
     <dhcp>
-      <range start='10.20.30.2' end='10.20.30.254'/>
+      <range start='10.20.30.128' end='10.20.30.254'/>
+      <bootp file='pxelinux.0' server='10.20.30.1' />
     </dhcp>
   </ip>
 </network>
