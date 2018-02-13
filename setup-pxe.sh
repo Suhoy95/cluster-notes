@@ -83,8 +83,8 @@ DEFAULT menu.c32
 PROMPT 0
 # Display the bootup message
 display pxelinux.cfg/pxeboot.msg
-# Boot automatically after 30 seconds in tenths of a second
-timeout 300
+# Boot automatically after 3 seconds in tenths of a second
+timeout 30
 LABEL local
     MENU LABEL local
     localboot 0
