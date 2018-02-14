@@ -1,6 +1,6 @@
 .PHONY: all setup networks pxe ks clean
 
-NUMBER_OF_NODES = 3
+NUMBER_OF_NODES = $(shell wc -l < macs.txt)
 
 all:
 	./configure.sh

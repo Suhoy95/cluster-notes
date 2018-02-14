@@ -84,7 +84,7 @@ PROMPT 0
 # Display the bootup message
 display pxelinux.cfg/pxeboot.msg
 # Boot automatically after 3 seconds in tenths of a second
-timeout 30
+timeout 300
 LABEL local
     MENU LABEL local
     localboot 0
@@ -98,6 +98,25 @@ LABEL node$i
     APPEND initrd=centos7/initrd.img ks=ftp://10.20.30.1/node$i-ks.cfg
     IPAPPEND 2
 PXE_CONFIG
+done
+
+i=1
+for mac in $(cat macs.txt); do
+    cat <<PXE_CONFIG > tftp/pxelinux.cfg/01-$mac
+default autoinstall
+PROMPT 0
+display pxelinux.cfg/pxeboot.msg
+timeout 30
+LABEL local
+    MENU LABEL local
+    localboot 0
+LABEL autoinstall
+    MENU LABEL autoinstall
+    KERNEL centos7/vmlinuz
+    APPEND initrd=centos7/initrd.img ks=ftp://10.20.30.1/node$i-ks.cfg
+    IPAPPEND 2
+PXE_CONFIG
+let 'i=i + 1'
 done
 
 cat <<TFTP_CONFIG > tftpd-hpa
