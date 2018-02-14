@@ -16,5 +16,15 @@ pxe:
 ks:
 	NUMBER_OF_NODES=$(NUMBER_OF_NODES) ./generate-ks.py
 
+# virtlib
+start:
+	true
+
+stop:
+	true
+
+start_pxe:
+	true
+
 clean:
 	./clean.sh
