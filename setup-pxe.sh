@@ -95,7 +95,7 @@ for i in $(seq $NUMBER_OF_NODES); do
 LABEL node$i
     MENU LABEL node^$i
     KERNEL centos7/vmlinuz
-    APPEND initrd=centos7/initrd.img ks=ftp://10.20.30.1/node$i-ks.cfg
+    APPEND initrd=centos7/initrd.img ks=ftp://10.20.30.1/node$i-ks.cfg sshd
     IPAPPEND 2
 PXE_CONFIG
 done
@@ -113,7 +113,7 @@ LABEL local
 LABEL autoinstall
     MENU LABEL autoinstall
     KERNEL centos7/vmlinuz
-    APPEND initrd=centos7/initrd.img ks=ftp://10.20.30.1/node$i-ks.cfg
+    APPEND initrd=centos7/initrd.img ks=ftp://10.20.30.1/node$i-ks.cfg sshd
     IPAPPEND 2
 PXE_CONFIG
 let 'i=i + 1'
