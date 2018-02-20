@@ -1,0 +1,5 @@
+environment-modules
+openmpi-devel
+openmpi
+mc
+expect # Parallel Srudio
